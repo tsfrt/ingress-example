@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+ name: ingress-ca
+ namespace: default
+spec:
+ secretName: ingress-tls-ca-key-pair
+ isCA: true
+ issuerRef:
+   name: ingress-ca-issuer
+   kind: Issuer
+ commonName: "ingress.h2o-2-18171.h2o.vmware.com"
+ dnsNames:
+ - '*.h2o-2-18171.h2o.vmware.com'
