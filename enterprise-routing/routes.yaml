@@ -1,0 +1,56 @@
+#@ load("@ytt:data", "data")
+#@ load("@ytt:template", "template")
+
+---
+apiVersion: projectcontour.io/v1
+kind: HTTPProxy
+metadata:
+  name: enterprise-routing
+  namespace: #@ data.values.routing.namespace
+spec:
+  virtualhost:
+    fqdn: #@ data.values.routing.host
+    #@ if data.values.routing.tlsSecret:
+    tls:
+      secretName: #@ data.values.routing.tlsSecret
+    #@ end
+  includes:
+    #@ for/end route in data.values.routing.routes:
+      - name: #@ route.name
+        namespace: #@ route.namespace
+        conditions:
+        - prefix: #@ route.path
+
+#@ for/end route in data.values.routing.routes:
+--- 
+apiVersion: projectcontour.io/v1
+kind: HTTPProxy
+metadata:
+  name: #@ route.name
+  namespace: #@ route.namespace
+spec:
+  routes:
+  - services:
+    - name: #@ route.name
+      port: #@ route.port
+    conditions:
+    - prefix: #@ route.path
+    pathRewritePolicy:
+      replacePrefix:
+      - prefix: #@ route.path
+        replacement: /
+
+#@ for/end route in data.values.routing.routes:
+---
+#@ if route.type == 'external':
+apiVersion: v1
+kind: Service
+metadata:
+  name: #@ route.name
+  namespace: #@ route.namespace
+spec:
+  type: ExternalName
+  externalName: #@ route.hostname
+  ports:
+  - port: 443
+#@ end

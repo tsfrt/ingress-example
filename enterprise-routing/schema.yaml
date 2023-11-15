@@ -1,0 +1,14 @@
+#@data/values-schema
+---
+routing:
+  namespace: ""
+  host: ""
+  tlsSecret: ""
+  routes:
+  - name: ""
+    type: ""
+    namespace: ""
+    service: ""
+    port: 0
+    path: ""
+    hostname: ""

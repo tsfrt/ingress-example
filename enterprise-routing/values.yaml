@@ -1,0 +1,27 @@
+#@data/values
+---
+routing:
+  namespace: enterprise-routing
+  host: ingress.h2o-2-18171.h2o.vmware.com
+  tlsSecret: ""
+  routes:
+  - name: harbor
+    type: external
+    namespace: enterprise-routing
+    service: harbor
+    port: 443
+    path: /harbor
+    hostname: harbor.cspf.test
+  - name: nginx
+    type: internal
+    namespace: enterprise-routing
+    service: my-nginx
+    port: 80
+    path: /nginx
+  - name: kuard
+    type: internal
+    namespace: enterprise-routing
+    service: kuard
+    port: 80
+    path: /kuard
+
