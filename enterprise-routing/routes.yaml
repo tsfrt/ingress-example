@@ -52,5 +52,5 @@ spec:
   type: ExternalName
   externalName: #@ route.hostname
   ports:
-  - port: 443
+  - port: #@ route.port
 #@ end
