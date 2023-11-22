@@ -37,6 +37,12 @@ spec:
       replacePrefix:
       - prefix: #@ route.path
         replacement: /
+    #@ if route.type == 'external':
+    requestHeadersPolicy:
+      set:
+      - name: Host
+        value: #@ route.hostname
+    #@ end
 
 #@ for/end route in data.values.routing.routes:
 ---
