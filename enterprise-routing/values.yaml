@@ -18,5 +18,13 @@ routing:
     service: my-nginx
     port: 80
     path: /nginx
+  - name: kuard
+    type: internal
+    namespace: kuard
+    service: kuard
+    port: 80
+    path: /kuard
+
+
 
 
