@@ -21,7 +21,7 @@ routing:
   - name: kuard
     type: internal
     namespace: kuard
-    service: kuard
+    service: kuard-service
     port: 80
     path: /kuard
 
