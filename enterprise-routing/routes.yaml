@@ -33,8 +33,6 @@ spec:
   - services:
     - name: #@ route.service
       port: #@ route.port
-    conditions:
-    - prefix: #@ route.path
     pathRewritePolicy:
       replacePrefix:
       - prefix: #@ route.path
