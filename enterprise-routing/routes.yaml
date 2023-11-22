@@ -31,7 +31,7 @@ metadata:
 spec:
   routes:
   - services:
-    - name: #@ route.name
+    - name: #@ route.service
       port: #@ route.port
     conditions:
     - prefix: #@ route.path
