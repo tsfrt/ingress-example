@@ -14,7 +14,7 @@ routing:
     hostname: harbor.build.h2o-2-18171.h2o.vmware.com
   - name: nginx
     type: internal
-    namespace: enterprise-routing
+    namespace: nginx
     service: my-nginx
     port: 80
     path: /nginx
