@@ -11,7 +11,7 @@ routing:
     service: harbor
     port: 443
     path: /harbor
-    hostname: harbor.cspf.test
+    hostname: harbor.build.h2o-2-18171.h2o.vmware.com
   - name: nginx
     type: internal
     namespace: enterprise-routing
