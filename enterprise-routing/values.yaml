@@ -9,9 +9,9 @@ routing:
     type: external
     namespace: enterprise-routing
     service: harbor
-    port: 443
+    port: 80
     path: /harbor
-    hostname: harbor.build.h2o-2-18171.h2o.vmware.com
+    hostname: harbor.ingress.h2o-2-18171.h2o.vmware.com
   - name: nginx
     type: internal
     namespace: nginx
