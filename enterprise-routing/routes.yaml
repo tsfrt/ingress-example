@@ -33,7 +33,7 @@ spec:
   - services:
     - name: #@ route.service
       port: #@ route.port
-    #@ if not hasattr(route, "no_replacement"):
+    #@ if not route.no_replacement:
     pathRewritePolicy:
       replacePrefix:
       - prefix: #@ route.path
