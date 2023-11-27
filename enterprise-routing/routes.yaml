@@ -33,10 +33,12 @@ spec:
   - services:
     - name: #@ route.service
       port: #@ route.port
+    #@ if not route.no_replacement:
     pathRewritePolicy:
       replacePrefix:
       - prefix: #@ route.path
         replacement: /
+    #@ end
     #@ if route.type == 'external':
     requestHeadersPolicy:
       set:
