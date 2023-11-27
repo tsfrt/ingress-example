@@ -12,6 +12,7 @@ routing:
     port: 80
     path: /harbor
     hostname: harbor.ingress.h2o-2-18171.h2o.vmware.com
+    no_replacement: true
   - name: nginx
     type: internal
     namespace: nginx
